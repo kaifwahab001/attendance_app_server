@@ -101,9 +101,30 @@ def verifyFace():
 
 
 
+
+
+
+
+
+
+# @app.route('/deepface', methods=['POST'])
+# def deepface():
+#     data = request.json
+#     image1 = data['image1']
+#     image2 = data['image2']
+
+#     result = DeepFace.verify(image1, image2, enforce_detection=False)
+#     return jsonify(result)
+
+
+
+
+
+
 # Create documents folder
 docs_folder = os.path.join('documents')
 os.makedirs(docs_folder, exist_ok=True)
+
 
 # Route for document upload
 @app.route('/upload-document', methods=['POST'])
@@ -112,6 +133,7 @@ def upload_document():
         return {"status": 400, "message": "Document file required"}
 
     file = request.files['document']
+
     
     # Verify file extension (optional)
     allowed_extensions = {'.pdf', '.doc', '.docx', '.txt'}
